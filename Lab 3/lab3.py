@@ -62,25 +62,28 @@ def getLongestString():
 
     # Get length of each input string
     def char_count(s):
-        return len(s)
+        return [len(s), s]
 
     # Return larger of two string lengths
     def find_largest(a,b):
         return max(a,b)
 
-    return reduce(find_largest, map(char_count, strings))
+    # Return the second element of the list returned from find_largest() ('reduce' part), which is the longest string
+    return reduce(find_largest, map(char_count, strings))[1]
+
 
 # Test code
 
 # test_list = [True,True,True,False,True,False]
-# # Task 1
+
+# Task 1
 # print(all_true(test_list))
 
-# # Task 1.1
+# Task 1.1
 # print(one_true(test_list))
 
-# # Task 2
+# Task 2
 # print(count_true(test_list))
 
-# # Task 3
+# Task 3
 # print(getLongestString())
