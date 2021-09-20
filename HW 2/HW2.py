@@ -30,13 +30,9 @@ def getWeekday(date):
     year = date
 
     # Convert January to 13 and February to 14, and subtract 1 from year
-    if month == 1:
-        month = 13
+    if (month == 1) or (month ==2):
+        month += 12
         year -= 1
-    elif month == 2:
-        month = 14
-        year -= 1
- 
 
     weekday = (day +floor((13 * (month + 1) / 5)) + (year % 100) + floor((year % 100) / 4) + floor((floor((year / 100)) / 4)) + (5 * floor((year / 100)))) % 7
 
@@ -97,6 +93,7 @@ def caesarEncoder(str, shift):
     encodedASCII = list(map(applyOffset, asciiList))
     # Convert back to a string
     encodedStr = asciiToString(encodedASCII)
+    
     return encodedStr
 
 ######################################################################
