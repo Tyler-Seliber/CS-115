@@ -6,8 +6,8 @@
 
 def dotProduct(L, K):
     '''Output dot product of lists L and K'''
-    if L[1:] == []:
-        return L[0] * K[0]
+    if L == []:
+        return 0
     else:
         return ((L[0] * K[0]) + dotProduct(L[1:], K[1:]))
     
@@ -19,10 +19,10 @@ def dotProduct(L, K):
 
 def removeAll(e, L):
     '''Remove all elements 'e' from list 'L' '''
-    if L[0] == e:
+    if L == []:
+        return []
+    elif L[0] == e:
         return removeAll(e, L[1:])
-    elif L[1:] == []:
-        return [L[0]]
     else:
         return [L[0]] + removeAll(e,L[1:])
 
@@ -32,7 +32,6 @@ def removeAll(e, L):
 # print('removeAll(42, [55, [77, 42], [11, 42], 88]) should be [55, [77, 42], [11, 42], 88]: ' + str(removeAll(42, [55, [77, 42], [11, 42], 88])))
 # print('removeAll([77, 42], [55, [77, 42], [11, 42], 88 ]) should be [55, [11, 42], 88]: ' + str(removeAll([77, 42], [55, [77, 42], [11, 42], 88])))
 # print()
-
 
 def geometricSeq(n, f, b):
     if n == 1:
@@ -50,14 +49,12 @@ def geometricSeq(n, f, b):
 def deepReverse(L):
     '''Returns reversal of list L'''
     # Allowed to use isinstance(L, list)
-    prev_result = []
     if L == []:
-        prev_result = []
+        return []
     elif isinstance(L[0], list):
-        prev_result = deepReverse(L[1:]) + [deepReverse(L[0])]
+        return deepReverse(L[1:]) + [deepReverse(L[0])]
     else:
-        prev_result = deepReverse(L[1:]) + [L[0]]
-    return prev_result
+        return deepReverse(L[1:]) + [L[0]]
 
 # Test code:
 # print('Testing deepReverse()')
