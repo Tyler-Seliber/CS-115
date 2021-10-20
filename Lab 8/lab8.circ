@@ -17,7 +17,7 @@
       <a name="valign" val="base"/>
     </tool>
   </lib>
-  <main name="ParityGenerator"/>
+  <main name="XOR"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -56,29 +56,75 @@
     <a name="clabelfont" val="SansSerif plain 12"/>
     <appear>
       <circ-port height="10" pin="350,410" width="10" x="95" y="65"/>
-      <circ-port height="8" pin="70,310" width="8" x="66" y="46"/>
       <circ-port height="8" pin="140,310" width="8" x="86" y="46"/>
+      <circ-port height="8" pin="70,310" width="8" x="66" y="46"/>
       <path d="M71,51 Q75,61 79,51" fill="none" stroke="#808080" stroke-width="2"/>
       <rect fill="none" height="30" stroke="#000000" stroke-width="2" width="50" x="50" y="50"/>
       <circ-anchor facing="east" height="6" width="6" x="97" y="57"/>
     </appear>
-    <comp lib="0" loc="(70,310)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="X"/>
-    </comp>
+    <wire from="(110,520)" to="(110,590)"/>
+    <wire from="(140,310)" to="(140,320)"/>
+    <wire from="(100,510)" to="(100,520)"/>
+    <wire from="(140,320)" to="(250,320)"/>
+    <wire from="(70,310)" to="(70,330)"/>
+    <wire from="(80,330)" to="(80,350)"/>
+    <wire from="(80,350)" to="(80,370)"/>
+    <wire from="(140,320)" to="(140,340)"/>
+    <wire from="(220,570)" to="(220,590)"/>
+    <wire from="(250,440)" to="(250,470)"/>
+    <wire from="(350,410)" to="(350,640)"/>
+    <wire from="(200,640)" to="(350,640)"/>
+    <wire from="(250,320)" to="(250,360)"/>
+    <wire from="(120,340)" to="(140,340)"/>
+    <wire from="(210,520)" to="(230,520)"/>
+    <wire from="(210,520)" to="(210,570)"/>
+    <wire from="(250,440)" to="(260,440)"/>
+    <wire from="(210,570)" to="(220,570)"/>
+    <wire from="(250,390)" to="(260,390)"/>
+    <wire from="(260,390)" to="(260,440)"/>
+    <wire from="(70,310)" to="(80,310)"/>
+    <wire from="(100,520)" to="(110,520)"/>
+    <wire from="(70,330)" to="(80,330)"/>
+    <wire from="(120,340)" to="(120,460)"/>
+    <wire from="(110,590)" to="(180,590)"/>
+    <wire from="(210,350)" to="(210,470)"/>
+    <wire from="(80,400)" to="(80,460)"/>
+    <wire from="(80,350)" to="(210,350)"/>
     <comp lib="0" loc="(140,310)" name="Pin">
       <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Y"/>
+    </comp>
+    <comp lib="0" loc="(70,310)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="X"/>
     </comp>
     <comp lib="0" loc="(350,410)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="tristate" val="false"/>
     </comp>
+    <comp lib="1" loc="(200,640)" name="OR Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(80,400)" name="NOT Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(230,520)" name="AND Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="2"/>
+    </comp>
     <comp lib="2" loc="(314,250)" name="Text">
       <a name="text" val="Use minterm expansion to create an XOR gate using AND + OR gates"/>
+    </comp>
+    <comp lib="1" loc="(250,390)" name="NOT Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(100,510)" name="AND Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="2"/>
     </comp>
   </circuit>
   <circuit name="ParityGenerator">
@@ -86,15 +132,93 @@
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <comp lib="0" loc="(70,80)" name="Pin">
+    <wire from="(160,130)" to="(160,200)"/>
+    <wire from="(80,130)" to="(140,130)"/>
+    <wire from="(80,130)" to="(80,200)"/>
+    <wire from="(120,100)" to="(120,110)"/>
+    <wire from="(270,610)" to="(390,610)"/>
+    <wire from="(70,110)" to="(120,110)"/>
+    <wire from="(160,130)" to="(270,130)"/>
+    <wire from="(140,130)" to="(140,340)"/>
+    <wire from="(420,230)" to="(420,700)"/>
+    <wire from="(210,80)" to="(210,160)"/>
+    <wire from="(200,160)" to="(200,180)"/>
+    <wire from="(260,110)" to="(260,200)"/>
+    <wire from="(160,330)" to="(200,330)"/>
+    <wire from="(140,630)" to="(180,630)"/>
+    <wire from="(210,160)" to="(250,160)"/>
+    <wire from="(20,100)" to="(120,100)"/>
+    <wire from="(20,300)" to="(120,300)"/>
+    <wire from="(200,720)" to="(230,720)"/>
+    <wire from="(90,160)" to="(180,160)"/>
+    <wire from="(280,210)" to="(300,210)"/>
+    <wire from="(120,300)" to="(120,340)"/>
+    <wire from="(110,450)" to="(110,490)"/>
+    <wire from="(180,160)" to="(180,200)"/>
+    <wire from="(270,610)" to="(270,650)"/>
+    <wire from="(140,130)" to="(160,130)"/>
+    <wire from="(140,80)" to="(140,130)"/>
+    <wire from="(110,450)" to="(190,450)"/>
+    <wire from="(140,390)" to="(140,630)"/>
+    <wire from="(200,160)" to="(210,160)"/>
+    <wire from="(200,180)" to="(210,180)"/>
+    <wire from="(90,490)" to="(100,490)"/>
+    <wire from="(360,480)" to="(360,530)"/>
+    <wire from="(390,550)" to="(390,610)"/>
+    <wire from="(300,480)" to="(360,480)"/>
+    <wire from="(230,700)" to="(420,700)"/>
+    <wire from="(270,130)" to="(270,200)"/>
+    <wire from="(20,100)" to="(20,300)"/>
+    <wire from="(160,330)" to="(160,340)"/>
+    <wire from="(220,650)" to="(220,660)"/>
+    <wire from="(200,710)" to="(200,720)"/>
+    <wire from="(300,210)" to="(300,480)"/>
+    <wire from="(220,650)" to="(270,650)"/>
+    <wire from="(120,110)" to="(170,110)"/>
+    <wire from="(340,510)" to="(340,530)"/>
+    <wire from="(230,700)" to="(230,720)"/>
+    <wire from="(200,330)" to="(200,350)"/>
+    <wire from="(170,110)" to="(170,200)"/>
+    <wire from="(100,210)" to="(100,490)"/>
+    <wire from="(70,110)" to="(70,200)"/>
+    <wire from="(180,630)" to="(180,660)"/>
+    <wire from="(70,80)" to="(70,110)"/>
+    <wire from="(170,110)" to="(260,110)"/>
+    <wire from="(120,510)" to="(340,510)"/>
+    <wire from="(90,160)" to="(90,200)"/>
+    <wire from="(370,550)" to="(390,550)"/>
+    <wire from="(210,180)" to="(210,350)"/>
+    <wire from="(250,160)" to="(250,200)"/>
+    <wire from="(180,160)" to="(200,160)"/>
+    <wire from="(420,230)" to="(430,230)"/>
+    <wire from="(190,210)" to="(190,450)"/>
+    <wire from="(130,80)" to="(140,80)"/>
+    <wire from="(200,350)" to="(210,350)"/>
+    <comp lib="2" loc="(565,115)" name="Text">
+      <a name="text" val="Tyler Seliber"/>
+    </comp>
+    <comp lib="0" loc="(210,80)" name="Pin">
       <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="X"/>
+      <a name="label" val="Z"/>
+    </comp>
+    <comp lib="2" loc="(523,27)" name="Text">
+      <a name="text" val="Write your parity circuit here"/>
+    </comp>
+    <comp loc="(370,540)" name="XOR">
+      <a name="label" val="XOR"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="2" loc="(554,78)" name="Text">
+      <a name="text" val="ONLY use: NOT, AND, OR, and any custom functions you write (included in the .circ submission)"/>
     </comp>
     <comp lib="0" loc="(140,80)" name="Pin">
       <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Y"/>
+    </comp>
+    <comp lib="2" loc="(540,57)" name="Text">
+      <a name="text" val="the output = 1 if an odd number of inputs (1 or 3) are 1, otherwise 0"/>
     </comp>
     <comp lib="0" loc="(420,230)" name="Pin">
       <a name="facing" val="west"/>
@@ -102,29 +226,105 @@
       <a name="tristate" val="false"/>
       <a name="label" val="Parity"/>
     </comp>
-    <comp lib="2" loc="(554,78)" name="Text">
-      <a name="text" val="ONLY use: NOT, AND, OR, and any custom functions you write (included in the .circ submission)"/>
+    <comp lib="1" loc="(140,390)" name="AND Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(200,710)" name="OR Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="2" loc="(141,27)" name="Text">
+      <a name="text" val="Input Bits"/>
+    </comp>
+    <comp loc="(190,210)" name="Just1">
+      <a name="label" val="Just1"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="2" loc="(497,68)" name="Text"/>
+    <comp loc="(100,210)" name="Just1">
+      <a name="label" val="Just1"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="2" loc="(564,140)" name="Text">
+      <a name="text" val="I pledge my honor that I have abided by the Stevens Honor System."/>
+    </comp>
+    <comp loc="(280,210)" name="Just1">
+      <a name="label" val="Just1"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp loc="(120,500)" name="XOR">
+      <a name="label" val="XOR"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="0" loc="(70,80)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="X"/>
     </comp>
     <comp lib="2" loc="(434,183)" name="Text">
       <a name="text" val="Output Bit"/>
+    </comp>
+  </circuit>
+  <circuit name="Just1">
+    <a name="circuit" val="Just1"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(130,140)" to="(130,210)"/>
+    <wire from="(150,260)" to="(150,330)"/>
+    <wire from="(210,140)" to="(210,210)"/>
+    <wire from="(80,440)" to="(80,450)"/>
+    <wire from="(80,450)" to="(420,450)"/>
+    <wire from="(100,330)" to="(150,330)"/>
+    <wire from="(420,230)" to="(430,230)"/>
+    <wire from="(130,80)" to="(140,80)"/>
+    <wire from="(130,210)" to="(140,210)"/>
+    <wire from="(150,210)" to="(160,210)"/>
+    <wire from="(160,210)" to="(170,210)"/>
+    <wire from="(60,80)" to="(70,80)"/>
+    <wire from="(60,80)" to="(60,390)"/>
+    <wire from="(170,210)" to="(210,210)"/>
+    <wire from="(420,230)" to="(420,450)"/>
+    <wire from="(130,80)" to="(130,110)"/>
+    <wire from="(210,80)" to="(210,110)"/>
+    <wire from="(100,330)" to="(100,390)"/>
+    <comp lib="2" loc="(434,183)" name="Text">
+      <a name="text" val="Output Bit"/>
+    </comp>
+    <comp lib="0" loc="(420,230)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Parity"/>
+    </comp>
+    <comp lib="0" loc="(140,80)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Y"/>
+    </comp>
+    <comp lib="1" loc="(80,440)" name="AND Gate">
+      <a name="facing" val="south"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(150,260)" name="AND Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(130,140)" name="NOT Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(210,140)" name="NOT Gate">
+      <a name="facing" val="south"/>
     </comp>
     <comp lib="0" loc="(210,80)" name="Pin">
       <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Z"/>
     </comp>
-    <comp lib="2" loc="(141,27)" name="Text">
-      <a name="text" val="Input Bits"/>
-    </comp>
-    <comp lib="2" loc="(497,68)" name="Text"/>
-    <comp lib="2" loc="(523,27)" name="Text">
-      <a name="text" val="Write your parity circuit here"/>
-    </comp>
-    <comp lib="2" loc="(540,57)" name="Text">
-      <a name="text" val="the output = 1 if an odd number of inputs (1 or 3) are 1, otherwise 0"/>
-    </comp>
-    <comp lib="2" loc="(566,115)" name="Text">
-      <a name="text" val="WRITE YOUR NAME AND PLEDGE SOMEWHERE IN THIS CIRCUIT"/>
+    <comp lib="0" loc="(70,80)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="X"/>
     </comp>
   </circuit>
 </project>
