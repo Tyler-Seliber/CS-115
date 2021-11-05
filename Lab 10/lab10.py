@@ -45,27 +45,27 @@ Power = """
 #         f(5) = 5
 #         f(9) = 34
 Fibonacci = """
-00 setn r15 42
-01 read r1
-02 setn r2 0
-03 setn r3 1
-04 pushr r2 r15
-05 pushr r3 r15
-06 calln r14 09
-07 write r13
-08 halt
-09 jnezn r1 13
-10 popr r14 r15
-11 popr r13 r15
-12 jumpr r14
+00 read r1
+01 setn r2 0
+02 setn r3 1
+03 copy r4 r1
+04 addn r1 -1
+05 jnezn r4 08
+06 copy r3 r2
+07 jumpn 18
+08 addn r4 -1
+09 jnezn r4 12
+10 nop
+11 jumpn 18
+12 jeqzn r1 18
 13 addn r1 -1
-14 calln r14 09
-15 popr r2 r15
-16 add r3 r2 r13
-17 pushr r2 r15
-18 popr r13 r15
-19 popr r14 r15
-20 jumpr r14
+14 add r4 r2 r3
+15 copy r2 r3
+16 copy r3 r4
+17 jumpn 12
+18 write r3
+19 halt
+
 """
 
 
@@ -73,7 +73,7 @@ Fibonacci = """
 import hmmm
 import importlib
 
-runThis = Fibonacci  # Change to the function you want to run
+runThis = Max  # Change to the function you want to run
 doDebug = True # Change to turn debug mode on/off
 
 # call main() from the command line to run the program again
