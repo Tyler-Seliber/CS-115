@@ -268,6 +268,12 @@ HammingWeight = """
 11      jumpr   r14         # return value of r13 to caller in r14
 """
 
+Wubba = """
+
+00 halt
+
+"""
+
 def main():
     r1 = int(input())
     result = hamming_weight(r1)
@@ -303,7 +309,7 @@ def inner_product(x,y):
 
 # Set this variable to whichever program you want to execute
 # when this file is loaded.
-runThis = HammingWeight
+runThis = Wubba
 
 # Choose whether to use debug mode;
 doDebug = True;
