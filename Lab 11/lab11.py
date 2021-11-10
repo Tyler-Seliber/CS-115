@@ -6,8 +6,22 @@
 
 Wubba = """
 
-00 setn r1 0
-01 halt
+00 setn r15 42
+01 read r1
+02 calln r14 5
+03 write r13
+04 halt
+05 jnezn r1 8
+06 setn r13 1
+07 jumpr r14
+08 pushr r1 r15
+09 pushr r14 r15
+10 addn r1 -1
+11 calln r14 5
+12 popr r14 r15
+13 popr r1 r15
+14 mul r13 r13 r1
+15 jumpr r14
 
 """
 
