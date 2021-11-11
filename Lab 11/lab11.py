@@ -6,7 +6,7 @@
 
 Wubba = """
 
-00 setn r15 42
+00 setn r15 16
 01 read r1
 02 calln r14 5
 03 write r13
@@ -25,6 +25,11 @@ Wubba = """
 
 """
 
+# 1. How low could you start the stack?
+
+# 2. How deep does the stack get?
+
+# 3. What are the possible values of r14?
 
 # ~~~~~ Running ~~~~~~
 import hmmm
