@@ -1,9 +1,16 @@
 def fibonacci(n):
     if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+        res = 0
+        return res
+    n = n - 1
+    if n == 0:
+        res = 1
+        return res
+    
+    res = fibonacci(n)
+    n = n - 1
+    res2 = fibonacci(n)
+    res = res + res2
+    return res
 
-print(fibonacci(2))
+print(fibonacci(9))
