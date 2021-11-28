@@ -43,10 +43,7 @@ def getRGB( filename="in.png" ):
     """ need docstrings! """
     print("Opening the", filename, " file (each dot is a row)", end=' ')
     reader = png.Reader(filename)
-    #data = reader.read()
     data = reader.asRGBA()
-    width = data[0]
-    height = data[1]
     pixels = data[2]  # this is an iterator...
     PIXEL_LIST = []
     while True:
