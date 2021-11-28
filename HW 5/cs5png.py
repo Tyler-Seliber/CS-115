@@ -109,7 +109,7 @@ class PNGImage:
 
         return
 
-    def saveFile( self, filename = "test.png" ):
+    def saveFile( self, filename = "HW 5/test.png" ):
         """ save the object's data to a file """
         # we reverse the rows so that the y direction
         # increases upwards...
