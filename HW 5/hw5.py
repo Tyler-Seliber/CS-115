@@ -77,6 +77,6 @@ def mset(n):
     image.saveFile()
 
 if __name__ == "__main__":
-    iterations = 25 # Change this to play with the picture, once everything's working
+    iterations = 1000000 # Change this to play with the picture, once everything's working
     mset(iterations)
     # test()
