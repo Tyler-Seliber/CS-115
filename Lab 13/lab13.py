@@ -149,5 +149,19 @@ class Date:
 
     def __add__(self, deltaInDays):
         '''Computes the date following `self` by the specified number of days'''
-        # TODO
-        pass
+        newDay = Date(self.get_month(), self.get_day(), self.get_year())
+        if newDay.validate_params(newDay.get_month(), newDay.get_day() + deltaInDays, newDay.get_year()):
+            newDay.set_day(newDay.get_day() + deltaInDays)
+            return newDay
+        days_remaining_in_month = Date.daysInMonth[self.get_month()] - self.get_day()
+        # Add an extra day if it is a leap day
+        if newDay.get_month() == 2 and Date.isLeapYear(newDay.get_year()):
+            days_remaining_in_month += 1
+        if (newDay.get_month() >= 12):
+            newDay.set_month(1)
+            newDay.set_year(self.get_year() + 1)
+        else: 
+            newDay.set_month(self.get_month() + 1)
+        newDay.set_day(1)
+        return newDay.__add__(deltaInDays - days_remaining_in_month - 1)
+        
