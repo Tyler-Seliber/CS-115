@@ -17,7 +17,13 @@
 # Your constructor should allow for up to three argument (for the month,
 # day, and year).  Hint: recall the syntax for default parameter values.
 
-
+class InvalidDateError(ValueError):
+    '''Raised when an invalid date is entered.'''
+    def __init__(self, month, day, year):
+        self.month = month
+        self.day = day
+        self.year = year
+        super().__init__(f'{month}/{day}/{year} is an invalid date.')
 
 # Fill in the missing part in the class Date below
 class Date:
@@ -55,8 +61,7 @@ class Date:
             self.day = day
             self.year = year
         else:
-            # raise InvalidDateError(month, day, year)
-            pass
+            raise InvalidDateError(month, day, year)
 
     def __repr__(self):
         # Make sure to return a string that looks like a valid
@@ -81,7 +86,7 @@ class Date:
 
         if Date._validateCheckFeb29(m, d, y):
             return True
-        if d > Date.daysInMonth[m]:
+        if y < 1 or m < 1 or m > 12 or d < 1 or d > Date.daysInMonth[m]:
             return False
         return True
 
@@ -103,22 +108,19 @@ class Date:
         if self.validate_params(month, self.day, self.year):
             self.month = month
         else:
-            # raise InvalidDateError(month, self.day, self.year)
-            pass
+            raise InvalidDateError(month, self.day, self.year)
 
     def set_day(self, day):
         if self.validate_params(self.month, day, self.year):
             self.day = day
         else:
-            # raise InvalidDateError(self.month, day, self.year)
-            pass
+            raise InvalidDateError(self.month, day, self.year)
 
     def set_year(self, year):
         if self.validate_params(self.month, self.day, year):
             self.year = year
         else:
-            # raise InvalidDateError(self.month, self.day, year)
-            pass
+            raise InvalidDateError(self.month, self.day, year)
 
     # Date arithmetic!
 

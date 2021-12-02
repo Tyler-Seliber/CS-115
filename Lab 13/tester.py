@@ -1,3 +1,3 @@
 from lab13 import *
-z=Date(2,28,2020)
-print(z+2)
+z=Date(2,1,2021)
+z.set_year(0)
