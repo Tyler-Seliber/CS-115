@@ -2,10 +2,11 @@ debug = True
 
 import math, sys
 
-#class ZeroDenominatorError(ValueError):
-#    """Bare-bone exception class to signal zero denominators""" 
-#    def __init__(self):
-#        super().__init__("Zero denominator")
+class ZeroDenominatorError(ValueError):
+   """Bare-bone exception class to signal zero denominators""" 
+   def __init__(self):
+       # Call the base class constructor with an error message
+       super().__init__("Zero denominator")
 
 class Rational:
     def validate(self):
@@ -21,11 +22,11 @@ class Rational:
        #       str(self))
        # 
        # option 2: kill the program
-       sys.exit("Rational validation error")
+    #    sys.exit("Rational validation error")
        #
        # option 3: raise an exception (soft kill)
        # option 3a: use a custom excpetion
-       #raise ZeroDenominatorError
+       raise ZeroDenominatorError
        #
        # option 3b: use a standtard exception
        #raise ZeroDivisionError
@@ -42,7 +43,6 @@ class Rational:
         '''  
         self.numerator = n
         self.denominator = d
-        # self.storage = [n, d] # alternate way to store the data
         if not self.validate():
             # something went wrong
             self.__signal_validation_error()
@@ -50,21 +50,17 @@ class Rational:
         self.__simplify()
 
     def get_numerator(self):
-        # return self.storage[0]
         return self.numerator
 
     def set_numerator(self, x):
-        # self.storage[0] = x
         self.numerator = x
         if not self.validate():
             self.__signal_validation_error()
 
     def get_denominator(self):
-        # return self.storage[1]
         return self.denominator
 
     def set_denominator(self, x):
-        # self.storage[1] = x
         self.denominator = x
         if not self.validate():
             self.__signal_validation_error()
@@ -208,8 +204,5 @@ def main():
     print('f4 = ' + str(f4))
 
 
-if debug:
-    print(__name__)
-
 if __name__ == '__main__':
-    main()  
+    main()
