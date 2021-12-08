@@ -13,7 +13,8 @@ class Term:
         '''
         Term(k, n) creates a new term, representing k*x^n
         '''
-        pass
+        self.coef = k
+        self.exp = n
 
     def __str__(self):  # print(myTerm)
         '''
@@ -21,42 +22,42 @@ class Term:
         '''
         return str(self.coef) + '*x^' + str(self.exp)
 
-   # TODO
+   # TODO done
     def __repr__(self):  # eval(myTerm)
         '''
         Return a string representation of the term
         '''
-        pass
+        return 'Term(' + str(self.coef) + ', ' + str(self.exp) + ')'
 
-   # TODO
+   # TODO done
     def __eq__(self, other):  # myTerm == other
         '''
         Return True if two terms are equal to each other,
         that is, if they have the same coeffiecient and exponent
         '''
-        pass
+        return True if self.coef == other.coef and self.exp == other.exp else False
 
-    # TODO
+    # TODO done
     def __call__(self, val):  # myTerm(x)
         '''
         Evaluate the term k*x^n for x=val
         E.g., Term(2,4)(3) = 2*3^4 = 162
         '''
-        pass
+        return self.coef * (val ** self.exp)
 
-    # TODO
+    # TODO copy
     def __neg__(self):  # otherTerm = -myTerm
         '''
         Return a new term, with same exponent but opposite coeffient
         '''
-        pass
+        return Term(-self.coef, self.exp)
 
     # TODO
     def copy(self):  # myCopy = myTerm.copy()
         '''
         Make a term with the same values as this object
         '''
-        pass
+        return Term(self.coef, self.exp)
 
 # LinkedPolynomial
 # Adapted in java by Antonio Nicolosi from
