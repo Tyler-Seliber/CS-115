@@ -7,7 +7,7 @@ class Term:
     '''
     Class to represent a monomial (aka term) k*x^n
     '''
-    # TODO
+    # TODO done
 
     def __init__(self, k=1, n=0):  # myTerm = Term(...)
         '''
@@ -27,7 +27,7 @@ class Term:
         '''
         Return a string representation of the term
         '''
-        return 'Term(' + str(self.coef) + ', ' + str(self.exp) + ')'
+        return 'Term(' + str(self.coef) + ',' + str(self.exp) + ')'
 
    # TODO done
     def __eq__(self, other):  # myTerm == other
@@ -52,7 +52,7 @@ class Term:
         '''
         return Term(-self.coef, self.exp)
 
-    # TODO
+    # TODO done
     def copy(self):  # myCopy = myTerm.copy()
         '''
         Make a term with the same values as this object
@@ -80,28 +80,30 @@ class LinkedPolynomial:
         '''
         self.polyList = polyList.copy()  # deep copy of a list
 
-    # TODO
+    # TODO done?
     def addTerm(self, t):  # myPoly.addterm(Term(coef, exp))
         '''
         Append a given Term to the list for this LinkedPolynomial
         Assume (without checking) that the Term has non-zero coefficient,
         and it comes in the proper spot with respect to exponent order.
         '''
-        pass
+        self.polyList.append(t)
+        
 
     # myPoly2; myPoly2.createListFromNumber(...)
-    # TODO
+    # TODO done?
     def createFromNumbers(self, numList):
         '''
         Create a polynomial given a list of (k, n) tuples
         Assume the list to be in the form [(coef1, exp1), (coef2, exp2)...]
         with exponents in descending order and no 0 coefficients. '''
-        pass
+        for x in numList:
+            LinkedPolynomial.addTerm(self, x)
 
-    # TODO
+    # TODO done
     def __len__(self):  # len(myPoly)
         ''' Returns the length of the polynomial (number of nonzero term)'''
-        pass
+        return len(self.polyList)
 
     def __str__(self):  # print(myPoly)
         '''
@@ -162,22 +164,30 @@ class LinkedPolynomial:
 
         return result
 
-    # TODO
+    # TODO done?
     def __eq__(self, other):  # myPoly == other
         '''
         Check if 2 polynomials are equal.
         Assume that no polynomials have 0-coefficient terms.
         Hint: If two LP are equal, then they will be identical in every way '''
-        pass
+        if (len(self) != len(other)):
+            return False
+        for i in range(0, len(self)):
+            if self.polyList[i] != other.polyList[i]:
+                return False
+        return True
 
-    # TODO
+    # TODO done?
     def __call__(self, val):  # myPoly(val)
         '''
         Evaluate self at x=val - should use Term's __call__
         '''
-        pass
+        sum = 0
+        for x in self.polyList:
+            sum = sum + x(val)
+        return sum
 
-    # TODO
+    # TODO done?
     def __neg__(self):  # negPoly = -myPoly
         '''
         Return a *new* LinkedPolynomial representing -1 * self
@@ -185,9 +195,12 @@ class LinkedPolynomial:
 
         Hint: use Term's __neg__
         '''
-        pass
+        newPoly = LinkedPolynomial()
+        for x in self.polyList:
+            LinkedPolynomial.addTerm(newPoly, -x)
+        return newPoly
 
-    # TODO
+    # TODO done?
     def __sub__(self, other):  # subPoly = myPoly - other
         '''
         Return a *new* LinkedPolynomial representing self - other
@@ -195,7 +208,7 @@ class LinkedPolynomial:
 
         Hint: use __add__ !
         '''
-        pass
+        return LinkedPolynomial(self.polyList + -other)
 
     # Extra Credit (15 pts)
     def __mul__(self, otherPoly):  # mulPoly = myPoly * otherPoly
