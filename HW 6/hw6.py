@@ -45,7 +45,7 @@ class Term:
         '''
         return self.coef * (val ** self.exp)
 
-    # TODO copy
+    # TODO done
     def __neg__(self):  # otherTerm = -myTerm
         '''
         Return a new term, with same exponent but opposite coeffient

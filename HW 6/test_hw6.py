@@ -40,6 +40,15 @@ class TestTerm(unittest.TestCase):
         self.assertEqual(-self.t1, n1)
         self.assertEqual(-self.t2, n2)
 
+    def test_copy(self):
+        c1 = self.t1.copy()
+        c2 = self.t2.copy()
+        self.assertEqual(self.t1, c1)
+        self.assertEqual(self.t2, c2)
+        self.assertNotEqual(id(self.t1), id(c2))
+        self.assertNotEqual(id(self.t2), id(c1))
+
+
 class TestLinkedPolynomial(unittest.TestCase):
     def test_get_data(self):
         pass
