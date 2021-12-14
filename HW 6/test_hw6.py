@@ -50,8 +50,82 @@ class TestTerm(unittest.TestCase):
 
 
 class TestLinkedPolynomial(unittest.TestCase):
-    def test_get_data(self):
-        pass
+    
+    p1 = LinkedPolynomial()
+    t0 = Term(1,0)
+    t1 = Term(1,1)
+    t2 = Term(-2,2)
+    t3 = Term(3,3)
+
+
+    def test_init(self):
+        self.assertIsNotNone(self.p1)
+    
+    def test_addTerm(self):
+        self.p1.addTerm(self.t3)
+        self.assertEqual(str(self.p1), str(self.t3))
+
+        self.p1.addTerm(self.t2)
+        self.assertEqual(str(self.p1), str(self.t3) + ' - ' + str(-self.t2))
+
+        self.p1.addTerm(self.t1)
+        self.assertEqual(str(self.p1), str(self.t3) + ' - ' + str(-self.t2) + ' + ' + str(self.t1))
+
+        self.p1.addTerm(self.t0)
+        self.assertEqual(str(self.p1), str(self.t3) + ' - ' + str(-self.t2) + ' + ' + str(self.t1) + ' + ' + str(self.t0))
+
+    def test_createFromNumbers(self):
+        n = [(3,3), (2,2), (-1,1), (1,0)]
+        p2 = LinkedPolynomial()
+        p2.createFromNumbers(n)
+        self.assertEqual(str(p2), str(Term(3,3)) + ' + ' + str(Term(2,2)) + ' - ' + str(-Term(-1,1)) + ' + ' + str(Term(1,0)))
+
+    def test_len(self):
+        self.assertEqual(len(self.p1), 4)
+
+    def test_eq(self):
+        p3 = LinkedPolynomial()
+        self.assertNotEqual(self.p1, p3)
+        p3.addTerm(self.t3)
+        self.assertNotEqual(self.p1, p3)
+        p3.addTerm(self.t2)
+        self.assertNotEqual(self.p1, p3)
+        p3.addTerm(self.t1)
+        self.assertNotEqual(self.p1, p3)
+        p3.addTerm(self.t0)
+        self.assertEqual(self.p1, p3)
+        p3.addTerm(Term(4,4))
+        self.assertNotEqual(self.p1, p3)
+
+    def test_call(self):
+        self.assertEqual(self.p1(0), 1)
+        self.assertEqual(self.p1(1), 3)
+        self.assertEqual(self.p1(5), 331)
+        self.assertEqual(self.p1(-1), -5)
+        self.assertEqual(self.p1(-10), -3209)
+
+    def test_neg(self):
+        p4 = -self.p1
+        self.assertEqual(str(p4), str(-self.t3) + ' + ' + str(-self.t2) + ' - ' + str(self.t1) + ' - ' + str(self.t0))
+
+    def test_sub(self):
+        p5 = LinkedPolynomial()
+        p5.addTerm(Term(1,3))
+
+        p6 = LinkedPolynomial()
+        n = [(2,3), (-2,2), (1,1), (1,0)]
+        p6.createFromNumbers(n)
+
+        self.assertEqual(self.p1 - p5, p6)
+
+        p5.addTerm(Term(1,2))
+        p5.addTerm(Term(2,1))
+        p5.addTerm(Term(-3,0))
+
+        p7 = LinkedPolynomial()
+        n = [(2,3), (-3,2), (-1,1), (4,0)]
+        p7.createFromNumbers(n)
+        self.assertEqual(self.p1 - p5, p7)
 
 if __name__ == '__main__':
     unittest.main()
